@@ -1,3 +1,3 @@
-FROM --platform=linux/arm64 mysql:5.7
+FROM mysql:latest
 ADD ./master/my.cnf /etc/mysql/my.cnf
 
