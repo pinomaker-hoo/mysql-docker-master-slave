@@ -1,9 +1,7 @@
 version: "3"
 services:
   db-master:
-    build:
-      context: ./
-      dockerfile: master/Dockerfile
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_DATABASE: "db"
@@ -15,13 +13,12 @@ services:
     volumes:
       - my-db-master:/var/lib/mysql
       - my-db-master:/var/lib/mysql-files
+      - ./master/my.cnf:/etc/mysql/my.cnf
     networks:
       - net-mysql
 
   db-slave:
-    build:
-      context: ./
-      dockerfile: slave/Dockerfile
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_DATABASE: "db"
@@ -33,6 +30,7 @@ services:
     volumes:
       - my-db-slave:/var/lib/mysql
       - my-db-slave:/var/lib/mysql-files
+      - ./master/my.cnf:/etc/mysql/my.cnf
     networks:
       - net-mysql
 
