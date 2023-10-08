@@ -30,7 +30,7 @@ services:
     volumes:
       - my-db-slave:/var/lib/mysql
       - my-db-slave:/var/lib/mysql-files
-      - ./master/my.cnf:/etc/mysql/my.cnf
+      - ./slave/my.cnf:/etc/mysql/my.cnf
     networks:
       - net-mysql
 
